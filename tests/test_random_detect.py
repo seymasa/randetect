@@ -28,14 +28,14 @@ class TestTextAnalyzer(unittest.TestCase):
             self.assertEqual(result, (0, "word"))
 
     def test_random_detect_with_low_entropy_and_high_ml_score(self):
-        text = "skvnsöcmöfvmsçvlslvlsşblsşb"
+        text = "hello guys!"
         # Mocking low entropy
         with patch.object(TextAnalyzer, "_entropy", return_value=2.0):
             result = self.analyzer.random_detect(text)
             self.assertEqual(result, (0, "word"))
 
     def test_random_detect_with_high_entropy_and_low_ml_score(self):
-        text = "hello"
+        text = "not a more."
         # Mocking high entropy
         with patch.object(TextAnalyzer, "_entropy", return_value=5.0):
             result = self.analyzer.random_detect(text)
