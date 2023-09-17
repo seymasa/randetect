@@ -6,8 +6,9 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="randetect",
-    version="0.1",
+    version="0.3",
     packages=find_packages(),
+    package_data={'randetect': ['models/logistic_regression_model.joblib']},
     install_requires=requirements,
     author="Seyma SARIGİL",
     author_email="seyma.sarigil@penguen.org.tr",

@@ -23,10 +23,9 @@ To use `Randetect`, you need to instantiate the `TextAnalyzer` class and then ca
 ```python
 from randetect import random_detect
 
-# Check if a text appears random or not
-text = "some_text_string_here"
-result, label = random_detect(text)
-print(f"'{text}' is {label}.")
+analyzer = random_detect.TextAnalyzer()
+result, label = analyzer.random_detect('asdfasdf')
+print(f"'{result}' is {label}.")
 ```
 
 In addition to predicting randomness, `Randetect` provides a `preprocess_text()` method to clean and prepare text:
