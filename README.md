@@ -32,9 +32,10 @@ print(f"'{text}' is {label}.")
 In addition to predicting randomness, `Randetect` provides a `preprocess_text()` method to clean and prepare text:
 
 ```python
-from randetect import preprocess_text
+from randetect import random_detect
 
-processed_text = preprocess_text(text)
+analyzer = random_detect.TextAnalyzer()
+processed_text = analyzer.preprocess_text('text')
 print(processed_text)
 ```
 

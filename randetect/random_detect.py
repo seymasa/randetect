@@ -12,16 +12,17 @@ class TextAnalyzer:
     It uses a pre-trained machine learning model and other heuristic measures like text entropy.
     """
 
-    def __init__(self, model_path):
+    def __init__(self, model_path=None):
         """
         Initialize the TextAnalyzer with a pre-trained model.
 
         Parameters:
-        - model_path (str): Path to the pre-trained machine learning model.
+        - model_path (str, optional): Path to the pre-trained machine learning model.
         """
-        # Determine the absolute path based on the current script's directory.
-        absolute_model_path = os.path.join(os.path.dirname(__file__), model_path)
-        self.pipe = load(absolute_model_path)
+        if model_path is None:
+            # Determine the path to the pre-trained model based on the current script's directory.
+            model_path = os.path.join(os.path.dirname(__file__), 'models/logistic_regression_model.joblib')
+        self.pipe = load(model_path)
 
     @staticmethod
     def _remove_emoji(text):
@@ -80,8 +81,8 @@ class TextAnalyzer:
 
         Returns:
         - tuple: (1 or 0, Either 'random' or 'word' indicating the type of text.)
-        1 : random
-        0 : word
+        1: random
+        0: word
         """
         prob_preds = self.pipe.predict_proba([text])
         ml_prediction_score = prob_preds[0][1]
