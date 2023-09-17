@@ -19,10 +19,15 @@ class TextAnalyzer:
         Parameters:
         - model_path (str, optional): Path to the pre-trained machine learning model.
         """
-        if model_path is None:
-            # Determine the path to the pre-trained model based on the current script's directory.
-            model_path = os.path.join(os.path.dirname(__file__), 'models/logistic_regression_model.joblib')
-        self.pipe = load(model_path)
+        try:
+            if model_path is None:
+                # Determine the path to the pre-trained model based on the current script's directory.
+                model_path = os.path.join(os.path.dirname(__file__), '/models/logistic_regression_model.joblib')
+            self.pipe = load(model_path)
+        except Exception as e:
+            print("Error loading the model:", e)
+
+
 
     @staticmethod
     def _remove_emoji(text):
